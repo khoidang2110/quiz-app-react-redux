@@ -6,6 +6,7 @@ import useAxios from "../hooks/useAxios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handleScoreChange } from "../redux/actions";
+import { Fragment } from "react";
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 };
@@ -75,12 +76,15 @@ if(e.target.textContent === question.correct_answer){
     <Box>
       <Typography variant="h4">Questions {questionIndex + 1}</Typography>
       <Typography mt={5}>{decode(response.results[questionIndex].question)}</Typography>
+     
       {options.map((data, id) => (
         <Box mt={2} key={id}>
-          <Button onClick={handleClickAnswer} variant="contained">{decode(data)}</Button>
+          <Button onClick={handleClickAnswer} variant="contained" fullWidth>{decode(data)}</Button>
         </Box>
       ))}
 
+      
+  
       <Box mt={5}>Score: {score} / {response.results.length}</Box>
     </Box>
   );
